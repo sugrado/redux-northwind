@@ -28,7 +28,7 @@ export default function CategoryList() {
 
   return (
     <div>
-      <h3>Categories {categories.length}</h3>
+      <h3>Categories</h3>
       <ul className="list-group">
         <li
           className="list-group-item"

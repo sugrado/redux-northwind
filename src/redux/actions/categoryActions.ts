@@ -10,7 +10,9 @@ export function changeCategory(category: Category): Action<Category> {
   } as Action<Category>;
 }
 
-export function getCategoriesSuccess(categories: Category[]) {
+export function getCategoriesSuccess(
+  categories: Category[]
+): Action<Category[]> {
   return {
     type: actionTypes.GET_CATEGORIES_SUCCESS,
     payload: categories,
