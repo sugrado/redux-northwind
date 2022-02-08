@@ -24,7 +24,8 @@ export default function cartReducer(
       } else return [...state, action.payload];
 
     case REMOVE_FROM_CART:
-      break;
+      var filteredState = state.filter((p) => p.id !== action.payload.id);
+      return filteredState;
 
     default:
       return state;

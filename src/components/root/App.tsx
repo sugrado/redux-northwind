@@ -4,6 +4,9 @@ import Navi from "../layouts/navi/Navi";
 import Dashboard from "./Dashboard";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import { Route, Routes } from "react-router-dom";
+import NotFound from "../pages/NotFound";
+import CartDetail from "../pages/cart/CartDetail";
 
 axios.defaults.baseURL = "http://localhost:3000/";
 function App() {
@@ -11,13 +14,15 @@ function App() {
     <div>
       <div className="container">
         <Navi />
-        <Dashboard />
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/cart" element={<CartDetail />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
         <ToastContainer
           position="bottom-right"
           theme="colored"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
+          autoClose={3000}
           closeOnClick
           pauseOnFocusLoss
           draggable
