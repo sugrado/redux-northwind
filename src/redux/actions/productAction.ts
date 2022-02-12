@@ -2,9 +2,9 @@ import axios from "axios";
 import { Action } from "../../models/Action";
 import { Product } from "../../models/Product";
 import {
-  CREATE_PRODUCTS_SUCCESS,
+  CREATE_PRODUCT_SUCCESS,
   GET_PRODUCTS_SUCCESS,
-  UPDATE_PRODUCTS_SUCCESS,
+  UPDATE_PRODUCT_SUCCESS,
 } from "./actionTypes";
 
 export function getProductsSuccess(products: Product[]) {
@@ -16,14 +16,14 @@ export function getProductsSuccess(products: Product[]) {
 
 export function createProductSuccess(product: Product) {
   return {
-    type: CREATE_PRODUCTS_SUCCESS,
+    type: CREATE_PRODUCT_SUCCESS,
     payload: product,
   } as Action<Product>;
 }
 
 export function updateProductSuccess(product: Product) {
   return {
-    type: UPDATE_PRODUCTS_SUCCESS,
+    type: UPDATE_PRODUCT_SUCCESS,
     payload: product,
   } as Action<Product>;
 }
@@ -53,14 +53,16 @@ export function saveProduct(product: Product) {
 
 export function saveProductApi(product: Product) {
   let method = product.id
-    ? axios.put("products", product)
+    ? axios.put(`products/${product.id}`, product)
     : axios.post("products", product);
 
   return method.then(handleResponse).catch(handleError);
 }
 
 export async function handleResponse(response: any) {
-  if (response.ok) return response;
+  if (response.status === 201 || response.status === 200) {
+    return response;
+  }
   const error = await response;
   throw new Error(error);
 }
