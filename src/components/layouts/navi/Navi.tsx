@@ -11,8 +11,13 @@ export default function Navi() {
           <div className="collapse navbar-collapse">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <div className="nav-link active" aria-current="page">
+                <div className="nav-link" aria-current="page">
                   <Link to={"/"}>Home</Link>
+                </div>
+              </li>
+              <li className="nav-item">
+                <div className="nav-link" aria-current="page">
+                  <Link to={"/saveProduct"}>Add Product</Link>
                 </div>
               </li>
             </ul>

@@ -1,6 +1,7 @@
 import RandExp from "randexp";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Cart } from "../../../models/Cart";
 import { Product } from "../../../models/Product";
@@ -39,6 +40,7 @@ export default function ProductList() {
       <table className="table table-hover">
         <thead>
           <tr>
+            <th scope="col"></th>
             <th scope="col">Id</th>
             <th scope="col">CategoryId</th>
             <th scope="col">ProductName</th>
@@ -51,6 +53,13 @@ export default function ProductList() {
         <tbody>
           {products.map((product) => (
             <tr key={product.id}>
+              <td>
+                <Link to={`saveProduct/${product.id}`}>
+                  <button className="btn btn-link">
+                    <i className="fa fa-edit"></i>
+                  </button>
+                </Link>
+              </td>
               <th scope="row">{product.id}</th>
               <td>{product.categoryId}</td>
               <td>{product.productName}</td>
