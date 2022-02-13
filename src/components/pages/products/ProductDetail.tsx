@@ -7,6 +7,7 @@ export default function ProductDetail({
   product,
   onSave,
   onChange,
+  errors,
 }) {
   return (
     <form onSubmit={onSave}>
@@ -17,7 +18,7 @@ export default function ProductDetail({
         value={product.productName}
         onChange={onChange}
         placeHolder="Type product name..."
-        error="Error"
+        error={errors.productName}
       />
       <SelectInput
         name="categoryId"
@@ -29,7 +30,7 @@ export default function ProductDetail({
           text: category.categoryName,
         }))}
         onChange={onChange}
-        error="Error"
+        error={errors.categoryId}
       />
       <TextInput
         name="unitPrice"
@@ -37,7 +38,7 @@ export default function ProductDetail({
         value={product.unitPrice}
         onChange={onChange}
         placeHolder="Type unit price..."
-        error="Error"
+        error={errors.unitPrice}
       />
       <TextInput
         name="quantityPerUnit"
@@ -45,7 +46,7 @@ export default function ProductDetail({
         value={product.quantityPerUnit}
         onChange={onChange}
         placeHolder="Type quantity per unit..."
-        error="Error"
+        error={errors.quantityPerUnit}
       />
       <TextInput
         name="unitsInStock"
@@ -53,7 +54,7 @@ export default function ProductDetail({
         value={product.unitsInStock}
         onChange={onChange}
         placeHolder="Type units in stock..."
-        error="Error"
+        error={errors.unitsInStock}
       />
       <button type="submit" className="btn btn-success">
         Save
